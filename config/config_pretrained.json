@@ -1,0 +1,45 @@
+{
+
+ "datasetCommonParams": {
+      "attractiveness": {
+          "featurePath": " ",
+          "seq_lens": [50, 50, 50],
+          "feature_dims": [768, 74, 35],
+          "train_samples": 16326,
+          "num_classes": 3,
+          "language": "ch",
+          "KeyEval": "Loss"
+        }
+    },
+  "tfn": {
+    "commonParams": {
+      "need_data_aligned": false,
+      "need_model_aligned": false,
+      "need_normalized": true,
+      "early_stop": 40,
+      "with_control": true,
+      "abl": "lav"
+    },
+    "datasetParams": {
+      "attractiveness": {
+        "hidden_dims": [
+          128,
+          32,
+          128
+        ],
+        "text_out": 64,
+        "post_fusion_dim": 32,
+        "dropouts": [
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ],
+        "batch_size": 32,
+        "learning_rate": 0.0005
+      }
+    }
+  }
+}
+
+
