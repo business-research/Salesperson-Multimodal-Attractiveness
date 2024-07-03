@@ -21,15 +21,15 @@ pip install torch pandas statsmodels numpy scikit-learn
 --
 
 ## Dataset
-Due to GitHub's storage limitations, the complete dataset, including training, validation, and test data, has been uploaded to Google Drive.
-You can access the full dataset using the following link: https://drive.google.com/drive/folders/1DZ7ZsC79xEYmY98D_4c8ReETXHFlprm7?usp=drive_link.
-After download, save it in path: data
+- Due to GitHub's storage limitations, the complete dataset, including training, validation, and test data, has been uploaded to Google Drive.
+- You can access the full dataset using the following link: https://drive.google.com/drive/folders/1DZ7ZsC79xEYmY98D_4c8ReETXHFlprm7?usp=drive_link.
+- After download, save it in path: data
 
 
 ## Pretrained model
-Due to GitHub's storage limitations, the pretrained modela has been uploaded to Google Drive. 
-You can access the full dataset using the following link: https://drive.google.com/drive/folders/1gwTUbA9rXLyN2_0xa65jtuJs4H8giWSA?usp=drive_link.
-After download, save it in path: pretrained_model
+- Due to GitHub's storage limitations, the pretrained modela has been uploaded to Google Drive. 
+- You can access the full dataset using the following link: https://drive.google.com/drive/folders/1gwTUbA9rXLyN2_0xa65jtuJs4H8giWSA?usp=drive_link.
+- After download, save it in path: pretrained_model
 
 ### Multimodal Features 
 #### Vocal Features
