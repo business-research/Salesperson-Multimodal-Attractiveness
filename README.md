@@ -48,7 +48,7 @@ Due to GitHub's storage limitations, the pretrained modela has been uploaded to 
 To run the analysis, follow these steps:
 1. Clone the repository:
    ```bash
-   git clone (https://github.com/business-research/Salesperson-Multimodal-Attractiveness).
+   git clone https://github.com/business-research/Salesperson-Multimodal-Attractiveness.
    ```
 2. Navigate to the cloned directory.
 3. Run the main script:
