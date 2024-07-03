@@ -1,29 +1,39 @@
-from config import get_config_regression
-from data_loader import MMDataLoader
-from models import AMIO
-from utils import assign_gpu
-from moudle_test import  do_test
+import torch.nn as nn
+from tqdm import tqdm
+from utils import assign_gpu, MetricsTop
 import torch
 
+def do_test(args, model, dataloader, mode="test"):
+    criterion = nn.L1Loss() if args.train_mode == 'regression' else nn.CrossEntropyLoss()
+    metrics = MetricsTop(args.train_mode).getMetics(args.dataset_name)
 
-def test(dataset_name, feature_path,  pretrained_model_path, config_file='config/config_pretrained.json'):
-    args = get_config_regression(dataset_name, config_file)
-    args.featurePath = feature_path
-    args.device = assign_gpu([0])
+    model.eval()
+    y_pred, y_true = [], []
+    eval_loss = 0.0
 
-    dataloader = MMDataLoader(args, 1)
-    model = AMIO(args).to(args['device'])
+    with torch.no_grad():
+        for batch_data in tqdm(dataloader):
+            vision = batch_data['vision'].to(args.device)
+            audio = batch_data['audio'].to(args.device)
+            text = batch_data['text'].to(args.device)
+            labels = batch_data['labels']['M'].to(args.device)
+            control = batch_data.get('control', None)
+            if control is not None:
+                control = control.to(args.device)
 
-    #load pretrained_model
-    model.load_state_dict(torch.load(pretrained_model_path))
-    model.to(args.device)
+            labels = labels.view(-1).long() if args.train_mode == 'classification' else labels.view(-1, 1)
+            outputs = model(text, audio, vision, control)['M']
+            loss = criterion(outputs, labels)
 
-    do_test(args, model, dataloader["test"])
+            eval_loss += loss.item()
+            y_pred.append(outputs.cpu())
+            y_true.append(labels.cpu())
 
+        avg_loss = eval_loss / len(dataloader)
+        pred, true = torch.cat(y_pred), torch.cat(y_true)
 
-if __name__ == '__main__':
-    dataset_name = "attractiveness"
-    feature_path = r"data/Salesperson_Attractiveness_data1993.pkl"
-    pretrained_model_path = r"pretrained_model/tfn_pretrained.pth"
+        eval_results = metrics(pred, true)
+        eval_results["Loss"] = round(avg_loss, 4)
 
-    test(dataset_name, feature_path,  pretrained_model_path)
+        print(f"Evaluation Results for {mode} mode: {eval_results}")
+        print(f"Predicted: {pred[0].item()}, True: {true[0].item()}")
