@@ -3,7 +3,7 @@ from tqdm import tqdm
 from utils import assign_gpu, MetricsTop
 import torch
 
-def do_test(args, model, dataloader, mode="test"):
+def do_test(args, model, dataloader, mode =="test"):
     criterion = nn.L1Loss() if args.train_mode == 'regression' else nn.CrossEntropyLoss()
     metrics = MetricsTop(args.train_mode).getMetics(args.dataset_name)
 
