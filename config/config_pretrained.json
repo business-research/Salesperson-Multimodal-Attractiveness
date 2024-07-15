@@ -23,20 +23,20 @@
     "datasetParams": {
       "attractiveness": {
         "hidden_dims": [
-          128,
+          64,
           32,
-          128
+          64
         ],
-        "text_out": 64,
-        "post_fusion_dim": 32,
+        "text_out": 256,
+        "post_fusion_dim": 16,
         "dropouts": [
-          0.3,
-          0.3,
-          0.3,
-          0.3
+          0.2,
+          0.2,
+          0.2,
+          0.2
         ],
         "batch_size": 32,
-        "learning_rate": 0.0005
+        "learning_rate": 0.001
       }
     }
   }
