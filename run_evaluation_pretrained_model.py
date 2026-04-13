@@ -27,7 +27,7 @@ def test(dataset_name, feature_path,  pretrained_model_path, config_file="config
 
 if __name__ == '__main__':
     dataset_name = "attractiveness"
-    feature_path = r"F:\A202405_Atractiveness_2025\data\charming1993_with_control_202503.pkl"
-    pretrained_model_path = r"F:\A202405_Atractiveness_2025\attractiveness最优模型\tfn_pretrained.pth"
+    feature_path = r"data\Attractiveness_data.pkl"
+    pretrained_model_path = r"pretrained_model/tfn_pretrained.pth"
 
     test(dataset_name, feature_path,  pretrained_model_path)
