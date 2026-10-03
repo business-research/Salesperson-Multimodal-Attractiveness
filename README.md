@@ -3,8 +3,7 @@
 
 
 ## Overview
-This repository contains the code and data used in the research paper "Salesperson Attractiveness Beyond Looks: Mixed Method of Multimodal Machine Learning and Explainable AI". 
-
+This repository contains the code and data used in the article "Salesperson Attractiveness Beyond Looks in Livestreaming E-Commerce: Mixed Method of Multimodal Machine Learning and Explainable AI," published in the Journal of Interactive Marketing, https://doi.org/10.1177/10949968261464927.
 ## Installation
 Before running the scripts, ensure you have the following dependencies installed:
 - Python 3.x
